@@ -26,7 +26,7 @@ class Board():
                     ind +=1
         return chessBoard
 
-    def load_board(self):
+    def load_board(self,size):
         boards = []
         boardRects = []
         for x in range(4):
@@ -49,13 +49,25 @@ class Board():
                 boards.append(board4)
                 boardRects.append(ballrect3)
                 boardRects.append(ballrect4)
+        font = pygame.font.Font('freesansbold.ttf', 12)
+        green = (0, 255, 0)
+        blue = (0, 0, 128)
+        for x in range(0,8):
+            for y in range(0,8):
+                square = square_name([x,y])
+                coords = coord_converter([x,y])
+                text = font.render(square, True, blue,)
+                textRect = text.get_rect()
+                textRect.center = (coords[0]-size[0]/24, coords[1]-size[1]/24)
+                boards.append(text)
+                boardRects.append(textRect)
         return boards , boardRects
 
     def load_pieces(self):
         white_pieces = []
         black_pieces = []
-        for x in range(8):
-            for y in range(8):
+        for y in range(8):
+            for x in range(8):
                 if self.board[x][y] == "p":
                     black_pieces.append(Pawn(False,[x,y]))
                 elif self.board[x][y] == "r":

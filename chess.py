@@ -9,10 +9,12 @@ size = width, height = 480, 480
 black = 0, 0, 0
 starting_fen = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
 fen2 = "rnbqkbnr/pp1ppppp/8/2p5/4P3/5N2/PPPP1PPP/RNBQKB1R b KQkq - 1 2"
-chessBoard= Board(fen2)
+test_fen = "8/8/8/8/8/8/3R1N2/4K3"
+test_fen2 = "8/8/8/8/8/8/8/4K3"
+chessBoard= Board(test_fen)
 screen = pygame.display.set_mode(size)
 
-boards , boardRects = chessBoard.load_board()
+boards , boardRects = chessBoard.load_board(size)
 white_pieces , black_pieces = chessBoard.load_pieces()
 
 
